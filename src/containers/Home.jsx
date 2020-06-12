@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+// import { Combobox, SelectMenu, Button } from 'evergreen-ui';
 import CardHome from '../components/CardHome';
+// import Component from '@reactions/component';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -14,6 +16,7 @@ const Home = () => {
       .then(response => {
         setData([...response]);
         setFilteredData([...response]);
+        // setFilteredDataByRegion([...response]);
       })
       .catch(e => console.log(e));
   }, []);
@@ -24,13 +27,28 @@ const Home = () => {
     setFilteredData(data.filter(x => x.name.includes(stringToUppercase)));
   };
 
-  // const convertToArray = Array.from(data.info);
-  // console.log(convertToArray);
+  const handleDropdownChange = e => {
+    if (e.target.value == 'NA') {
+      setFilteredData(data);
+    } else {
+      setFilteredData(data.filter(x => x.region.includes(e.target.value)));
+    }
+  };
 
   return (
     <>
-      <p>This is a test from Home</p>
+      <h1>Flags 😊</h1>
       <input type='search' onChange={handleChangeInput} id='search' />
+      <div>
+        <select id='dropdown' onChange={handleDropdownChange}>
+          <option value='NA'>Filter by Region</option>
+          <option value='Africa'>Africa</option>
+          <option value='America'>America</option>
+          <option value='Asia'>Asia</option>
+          <option value='Europe'>Europe</option>
+          <option value='Oceania'>Oceania</option>
+        </select>
+      </div>
       <ul>
         {filteredData.map(({ flag, name, population, region, capital }) => {
           return (
