@@ -1,13 +1,11 @@
 import React from 'react';
 
-const CardHome = props => {
-  console.log('from CardHome: ', props);
+const CardHome = ({ key, name }) => {
+  // console.log('from CardHome: ', props);
 
   return (
     <>
-      {Object.keys(props).map(x => {
-        return <li>{x.name}</li>;
-      })}
+      <li key={key}>{name}</li>
     </>
   );
 };
