@@ -25,7 +25,6 @@ const CardDetail = props => {
 
   return (
     <>
-      <p>Test from cardDetail</p>
       <button onClick={goBack}>Back</button>
       <div>
         {data.map(
@@ -81,7 +80,7 @@ const CardDetail = props => {
                         );
                       })
                     ) : (
-                      <p>No border countries</p>
+                      <p>No border countries 🏝</p>
                     )}
                   </div>
                 </div>

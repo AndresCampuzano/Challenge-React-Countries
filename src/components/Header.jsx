@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ children }) => {
   return (
     <>
-      <div className='header'>
+      <header className='header'>
         <div className='wrapper'>
-          <h1>Where in the world?</h1>
-          <p>Dark Mode</p>
+          <div className='content'>
+            <Link to='/'>
+              <h1>Where in the world?</h1>
+            </Link>
+            <p>🌓Dark Mode</p>
+          </div>
         </div>
-      </div>
+      </header>
       {children}
     </>
   );

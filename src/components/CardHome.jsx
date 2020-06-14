@@ -5,16 +5,26 @@ const CardHome = ({ flag, name, population, region, capital, route }) => {
   // console.log('from CardHome inside Home: ', alpha3Code);
 
   return (
-    <>
-      <li key={route}>
+    <article className='cards--item' key={route}>
+      <Link to={`/country/${route}`}>
         <img src={flag} alt={name} />
-        <h2>{name}</h2>
-        <p>{population}</p>
-        <p>{region}</p>
-        <p>{capital}</p>
-        <Link to={`/country/${route}`}>details</Link>
-      </li>
-    </>
+        <div className='cards--item--container'>
+          <h2>{name}</h2>
+          <p>
+            <strong>Population: </strong>
+            {population}
+          </p>
+          <p>
+            <strong>Region: </strong>
+            {region}
+          </p>
+          <p>
+            <strong>Capital: </strong>
+            {capital}
+          </p>
+        </div>
+      </Link>
+    </article>
   );
 };
 
