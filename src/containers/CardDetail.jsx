@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const CardDetail = props => {
-  // console.log(props.match.params.id); // Colombia : 57
-  console.log('props: ', props);
-  // console.log('props goBack: ', props.history.goBack);
-
+  const [valueBorder, setValueBorder] = useState(props.match.params.id);
   const [data, setData] = useState([]);
 
-  console.log('data from cardDetail: ', data);
+  const handleBorderCountries = e => {
+    e.preventDefault();
+    props.history.push(`/country/${e.target.value}`);
+    setValueBorder(e.target.value);
+  };
 
   useEffect(() => {
-    fetch(
-      `https://restcountries.eu/rest/v2/alpha?codes=${props.match.params.id}`
-    )
+    fetch(`https://restcountries.eu/rest/v2/alpha?codes=${valueBorder}`)
       .then(response => response.json())
       .then(response => {
         setData([...response]);
       })
       .catch(e => console.log(e));
-  }, []);
+  }, [valueBorder]);
 
   const goBack = () => {
     props.history.goBack();
@@ -71,13 +69,20 @@ const CardDetail = props => {
                   </div>
                   <div>
                     Border Countries:{' '}
-                    {borders.map(x => {
-                      return (
-                        <div key={Math.random()}>
-                          <a href={`/country/${x}`}>{x}</a>
-                        </div>
-                      );
-                    })}
+                    {borders.length > 0 ? (
+                      borders.map(x => {
+                        return (
+                          <div key={Math.random()}>
+                            {/* <a href={`/country/${x}`}>{x}</a> */}
+                            <button onClick={handleBorderCountries} value={x}>
+                              {x}
+                            </button>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <p>No border countries</p>
+                    )}
                   </div>
                 </div>
               </div>
