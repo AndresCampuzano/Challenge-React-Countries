@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+// Styles
+
 const CardDetail = props => {
   const [valueBorder, setValueBorder] = useState(props.match.params.id);
   const [data, setData] = useState([]);
@@ -24,9 +26,13 @@ const CardDetail = props => {
   };
 
   return (
-    <>
-      <button onClick={goBack}>Back</button>
-      <div>
+    <div className='cardDetail'>
+      <div className='wrapper'>
+        <div className='cardDetail--button'>
+          <button className='btn' onClick={goBack}>
+            Back
+          </button>
+        </div>
         {data.map(
           ({
             flag,
@@ -42,38 +48,69 @@ const CardDetail = props => {
             borders
           }) => {
             return (
-              <div key={Math.random()}>
-                <h1>{name}</h1>
-                <img src={flag} alt={name} />
-                <div>
-                  <p>Native Name: {nativeName}</p>
-                  <p>Population: {population}</p>
-                  <p>Region: {region}</p>
-                  <p>Sub Region: {subregion}</p>
-                  <p>Capital: {capital}</p>
+              <div key={Math.random()} className='cardDetail--grid'>
+                <div className='cardDetail--image'>
+                  <img src={flag} alt={name} />
                 </div>
-                <div>
-                  <p>Top Level Domain: {topLevelDomain}</p>
-                  <div>
-                    Currencies:{' '}
-                    {currencies.map(({ name }) => {
-                      return <div key={Math.random()}>{name}</div>;
-                    })}
+                <div className='cardDetail--text'>
+                  <div className='cardDetail--text--title'>
+                    <h1>{name}</h1>
                   </div>
-                  <div>
-                    Languages:{' '}
-                    {languages.map(({ name }) => {
-                      return <div key={Math.random()}>{name}</div>;
-                    })}
+                  <div className='cardDetail--text--secondGrid'>
+                    <div>
+                      <p>
+                        <strong>Native Name: </strong>
+                        {nativeName}
+                      </p>
+                      <p>
+                        <strong>Population: </strong>
+                        {population}
+                      </p>
+                      <p>
+                        <strong>Region: </strong>
+                        {region}
+                      </p>
+                      <p>
+                        <strong>Sub Region: </strong>
+                        {subregion}
+                      </p>
+                      <p>
+                        <strong>Capital: </strong>
+                        {capital}
+                      </p>
+                    </div>
+                    <div>
+                      <p>
+                        <strong>Top Level Domain: </strong>
+                        {topLevelDomain}
+                      </p>
+                      <div className='currencies'>
+                        <strong>Currencies: </strong>
+                        {currencies.map(({ name }) => {
+                          return <div key={Math.random()}>{name}</div>;
+                        })}
+                      </div>
+                      <div className='languages'>
+                        <strong>Languages: </strong>
+                        {languages.map(({ name }) => {
+                          return <div key={Math.random()}>{name}</div>;
+                        })}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    Border Countries:{' '}
+
+                  <div className='borderCountries'>
+                    <strong>Border Countries: </strong>
                     {borders.length > 0 ? (
                       borders.map(x => {
                         return (
                           <div key={Math.random()}>
                             {/* <a href={`/country/${x}`}>{x}</a> */}
-                            <button onClick={handleBorderCountries} value={x}>
+                            <button
+                              className='btn'
+                              onClick={handleBorderCountries}
+                              value={x}
+                            >
                               {x}
                             </button>
                           </div>
@@ -89,7 +126,7 @@ const CardDetail = props => {
           }
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import CardDetail from '../containers/CardDetail.jsx';
 import Header from '../components/Header.jsx';
 
 // Styles
-import '../assets/styles/app.scss';
+import '../components/app.scss';
 
 const App = () => {
   return (

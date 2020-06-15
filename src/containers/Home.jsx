@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import CardHome from '../components/CardHome';
 
-// Search icon
 import searchIcon from '../assets/images/search-24px.svg';
 // import arrowDown from '../assets/images/keyboard_arrow_down-24px.svg';
 
-const Home = () => {
+const Home = props => {
+  // console.log(props.isDark);
+
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
