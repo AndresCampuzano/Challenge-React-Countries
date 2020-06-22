@@ -9,11 +9,11 @@ const CardDetail = props => {
   const [valueBorder, setValueBorder] = useState(props.match.params.id);
   const [data, setData] = useState([]);
 
-  const handleBorderCountries = e => {
-    e.preventDefault();
-    props.history.push(`country/${e.target.value}`);
-    setValueBorder(e.target.value);
-  };
+  // const handleBorderCountries = e => {
+  //   e.preventDefault();
+  //   props.history.push(`country/${e.target.value}`);
+  //   setValueBorder(e.target.value);
+  // };
 
   useEffect(() => {
     fetch(`https://restcountries.eu/rest/v2/alpha?codes=${valueBorder}`)
