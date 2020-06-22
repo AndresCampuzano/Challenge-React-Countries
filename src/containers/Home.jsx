@@ -28,8 +28,6 @@ const Home = props => {
     }
   };
 
-  console.log(theme);
-
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then(response => response.json())
@@ -65,14 +63,16 @@ const Home = props => {
               <div className='loupe'>
                 <img src={searchIcon} alt='search' />
               </div>
+              <label htmlFor='country'>.</label>
               <input
                 type='search'
                 onChange={handleChangeInput}
-                id='search'
+                id='country'
                 placeholder='Search for a country...'
               />
             </div>
             <div>
+              <label htmlFor='dropdown'>.</label>
               <select
                 id='dropdown'
                 onChange={handleDropdownChange}

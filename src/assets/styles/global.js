@@ -74,6 +74,7 @@ strong {
 	font-weight: 600;
 }
 
+
 .header { 
 	height: 50px;
 	border-bottom: 1px solid #c7c7c7;
