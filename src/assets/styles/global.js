@@ -1,5 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
 
-// ------------- Reset CSS
+export const GlobalStyles = createGlobalStyle`
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -21,7 +22,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -45,19 +45,24 @@ table {
 	border-spacing: 0;
 }
 
-// ------------- End reset CSS
 
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+${
+  '' /* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap'); */
+}
 
 body {
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
   padding: 0;
+	background-color: ${({ theme }) => theme.backgroundColor};
+	color: ${({ theme }) => theme.textColor};
 }
 
 #app {
 	margin: auto;
+	color: ${({ theme }) => theme.textColor};
+
 }
 
 .wrapper {
@@ -69,9 +74,7 @@ strong {
 	font-weight: 600;
 }
 
-// ------------- Header
 .header {
-	// background-color: #af9c84;
 	height: 50px;
 	border-bottom: 1px solid #c7c7c7;
 	.wrapper {
@@ -83,7 +86,7 @@ strong {
 		align-items: center;
 		justify-content: space-between;
 		a {
-			color: black;
+			color: ${({ theme }) => theme.textColor};
 			text-decoration: none;
 			h1 {
 				font-size: 25px;
@@ -96,9 +99,7 @@ strong {
 		}
 	}
 }
-// ------------- End Header
 
-// ------------- Home
 .home {
 	.search {
 		height: 80px;
@@ -108,9 +109,9 @@ strong {
 		.search--container {
 			display: flex;
 			border-radius: 4px;
-			-webkit-box-shadow: 0px 1px 8px 0px #cccccc;
-			-moz-box-shadow: 0px 1px 8px 0px #cccccc;
-			box-shadow: 0px 1px 8px 0px #cccccc;
+			-webkit-box-shadow: ${({ theme }) => theme.webkitShadow};
+			-moz-box-shadow: ${({ theme }) => theme.mozBoxShadow};
+			box-shadow: ${({ theme }) => theme.boxShadow};
 			padding: 15px 80px 15px 20px;
 			.loupe {
 				align-self: center;
@@ -119,15 +120,19 @@ strong {
 				margin-left: 10px;
 				outline: none;
 				border: none;
+				color: ${({ theme }) => theme.textColor};
+				background-color: ${({ theme }) => theme.backgroundColor};
 			}
 		}
 		.dropdown {
 			padding: 15px 30px 15px 15px;
 			border-radius: 4px;
-			-webkit-box-shadow: 0px 1px 8px 0px #cccccc;
-			-moz-box-shadow: 0px 1px 8px 0px #cccccc;
-			box-shadow: 0px 1px 8px 0px #cccccc;
+			-webkit-box-shadow: ${({ theme }) => theme.webkitShadow};
+			-moz-box-shadow: ${({ theme }) => theme.mozBoxShadow};
+			box-shadow: ${({ theme }) => theme.boxShadow};
 			border: none;
+			color: ${({ theme }) => theme.textColor};
+			background-color: ${({ theme }) => theme.backgroundColor};
 		}
 	}
 
@@ -137,18 +142,15 @@ strong {
 		grid-gap: 80px
 	}
 }
-// ------------- End Home
 
-// ------------- CardHome
 .cards--item {
-	// width: 300px;
 	height: 300px;
 	border-radius: 8px;
-	-webkit-box-shadow: 0px 1px 8px 0px #cccccc;
-	-moz-box-shadow: 0px 1px 8px 0px #cccccc;
-	box-shadow: 0px 1px 8px 0px #cccccc;
+	-webkit-box-shadow: ${({ theme }) => theme.webkitShadow};
+	-moz-box-shadow: ${({ theme }) => theme.mozBoxShadow};
+	box-shadow: ${({ theme }) => theme.boxShadow};
 	a {
-		color: black;
+		color: ${({ theme }) => theme.textColor};
 		text-decoration: none;
 	}
 	img {
@@ -167,9 +169,7 @@ strong {
 		}
 	}
 }
-// ------------- End CardHome
 
-// ------------- cardDetail
 .cardDetail {
 	.cardDetail--button {
 		height: 120px;
@@ -180,24 +180,23 @@ strong {
 			padding: 10px 35px;
 			background: none;
 			border: none;
-			-webkit-box-shadow: 0px 1px 8px 0px #adadad;
-			-moz-box-shadow: 0px 1px 8px 0px #adadad;
-			box-shadow: 0px 1px 8px 0px #adadad;
+			-webkit-box-shadow: ${({ theme }) => theme.webkitShadow};
+			-moz-box-shadow: ${({ theme }) => theme.mozBoxShadow};
+			box-shadow: ${({ theme }) => theme.boxShadow};
 			border-radius: 4px;
 			cursor: pointer;
+			color: ${({ theme }) => theme.textColor};
 		}
 	}
 	.cardDetail--grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 35px;
-		// Grid 1
 		.cardDetail--image {
 			img {
 				width: 90%;
 			}
 		}
-		// Grid 2
 		.cardDetail--text {
 			padding: 6%;
 			.cardDetail--text--title {
@@ -207,7 +206,6 @@ strong {
 					margin: 15px 0;
 				}
 			}
-		// Grid 2.1
 			.cardDetail--text--secondGrid {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
@@ -243,22 +241,20 @@ strong {
 				.btn {
 					border: none;
 					background: none;
-					-webkit-box-shadow: 0px 1px 8px 0px #adadad;
-					-moz-box-shadow: 0px 1px 8px 0px #adadad;
-					box-shadow: 0px 1px 8px 0px #adadad;
+					-webkit-box-shadow: ${({ theme }) => theme.webkitShadow};
+					-moz-box-shadow: ${({ theme }) => theme.mozBoxShadow};
+					box-shadow: ${({ theme }) => theme.boxShadow};
 					border-radius: 4px;
 					padding: 2px 15px;
 					margin: 2px 5px;
-					cursor: pointer;
+					color: ${({ theme }) => theme.textColor};
 				}
 			}
 		}
 	}
 }
-// ------------- End cardDetail
 
 
-// ------------- Responsive ↓↓↓
 
 @media (max-width: 1024px) {
 	.home {
@@ -324,5 +320,5 @@ strong {
 	.cardDetail .cardDetail--grid .cardDetail--text .borderCountries {
 		width: 300px;
 	}
-
 }
+`;

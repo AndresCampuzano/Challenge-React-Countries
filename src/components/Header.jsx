@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = props => {
-  // console.log(props);
-
-  const [count, setCount] = useState(0);
-
-  // console.log('Count from header: ', count);
-
+const Header = ({ propToggleTheme }) => {
   return (
     <>
       <header className='header'>
         <div className='wrapper'>
           <div className='content'>
-            <Link to='/' onClick={() => setCount(count + 1)}>
+            <Link to='/'>
               <h1>Where in the world?</h1>
             </Link>
-            <p>🌓Dark Mode</p>
+            <button onClick={propToggleTheme}>🌓Dark Mode</button>
           </div>
         </div>
       </header>
-      {props.children}
     </>
   );
 };

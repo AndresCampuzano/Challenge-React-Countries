@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CardHome = ({ flag, name, population, region, capital, route }) => {
-  // console.log('from CardHome inside Home: ', alpha3Code);
-
+const CardHome = ({
+  flag,
+  name,
+  population,
+  region,
+  capital,
+  route,
+  currentTheme
+}) => {
   return (
     <article className='cards--item' key={route}>
-      <Link to={`/country/${route}`}>
+      <Link to={`${currentTheme}/country/${route}`}>
         <img src={flag} alt={name} />
         <div className='cards--item--container'>
           <h2>{name}</h2>
