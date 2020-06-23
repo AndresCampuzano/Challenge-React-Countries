@@ -10,7 +10,12 @@ const Header = ({ propToggleTheme }) => {
             <Link to='/'>
               <h1>Where in the world?</h1>
             </Link>
-            <p onClick={propToggleTheme}>🌓Dark Mode</p>
+            <p onClick={propToggleTheme}>
+              <span role='img' aria-label='moon'>
+                🌓
+              </span>
+              Dark Mode
+            </p>
           </div>
         </div>
       </header>

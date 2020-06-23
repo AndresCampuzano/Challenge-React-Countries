@@ -45,7 +45,7 @@ const Home = props => {
   };
 
   const handleDropdownChange = e => {
-    if (e.target.value == 'NA') {
+    if (e.target.value === 'NA') {
       setFilteredData(data);
     } else {
       setFilteredData(data.filter(x => x.region.includes(e.target.value)));

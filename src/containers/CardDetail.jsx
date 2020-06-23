@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from '../assets/styles/theme';
 import { GlobalStyles } from '../assets/styles/global';
 
 const CardDetail = props => {
-  const [valueBorder, setValueBorder] = useState(props.match.params.id);
+  // const [valueBorder, setValueBorder] = useState(props.match.params.id);
   const [data, setData] = useState([]);
 
   // const handleBorderCountries = e => {
@@ -16,13 +16,15 @@ const CardDetail = props => {
   // };
 
   useEffect(() => {
-    fetch(`https://restcountries.eu/rest/v2/alpha?codes=${valueBorder}`)
+    fetch(
+      `https://restcountries.eu/rest/v2/alpha?codes=${props.match.params.id}`
+    )
       .then(response => response.json())
       .then(response => {
         setData([...response]);
       })
       .catch(e => console.log(e));
-  }, [valueBorder]);
+  }, [props.match.params.id]);
 
   const goBack = () => {
     props.history.goBack();
