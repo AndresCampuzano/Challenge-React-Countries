@@ -67,7 +67,8 @@ body {
 
 .wrapper {
   max-width: 1200px;
-  margin: 0 5%;
+  margin: auto;
+  padding: 0 5%;
 }
 
 strong {
